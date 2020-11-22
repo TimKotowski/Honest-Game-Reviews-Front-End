@@ -23,6 +23,7 @@ const handleItemClick = (e, { name }) => {
             />
              <Menu.Item
             name='games'
+            as={NavLink} exact to="/games"
             active={activeItem === 'games'}
             onClick={handleItemClick}
             />
@@ -36,9 +37,7 @@ const handleItemClick = (e, { name }) => {
             active={activeItem === 'platforms'}
             onClick={handleItemClick}
             />
-      <Search labelPosition='right'
-
-      />
+      {/* <Search labelPosition='right'/> */}
         </Menu>
         </Segment>
   )

@@ -34,7 +34,7 @@ const Homepage = ({ mobile }) => {
           />
           <Header
             as="h2"
-            content="Do whatever you want when you want to."
+            content="Sign up to get started"
             inverted
             style={{
               fontSize: mobile ? '1.5em' : '1.7em',
