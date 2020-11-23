@@ -11,14 +11,13 @@ const handleItemClick = (e, { name }) => {
 }
 
 
-
   return (
+    <>
       <Segment
-            inverted
             vertical
             fluid
-            color="purple"
-            style={{maxHeight: "60px", paddingTop: "4px"}}
+            color
+            style={{maxHeight: "60px", paddingTop: "4px", backgroundColor: "#772ce7"}}
           >
     <Menu
     inverted  secondary size='medium'>
@@ -64,6 +63,7 @@ const handleItemClick = (e, { name }) => {
                 </Menu.Item>
         </Menu>
         </Segment>
+        </>
   )
 }
 

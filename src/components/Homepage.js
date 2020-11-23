@@ -5,8 +5,6 @@ import {
   Button,
   Icon,
   Segment,
-  Text,
-  Image,
   Divider,
   Card,
   CardGroup,
@@ -26,18 +24,25 @@ const Homepage = ({ mobile }) => {
       <Segment
         inverted
         textAlign="center"
-        style={{ minHeight: 600, padding: '1em 0em', backgroundColor: "#2D3044  " }}
+        style={{
+          minHeight: 600,
+          padding: '1em 0em',
+          backgroundColor: '#18181c  ',
+        }}
         vertical
       >
         <Container text>
-        <style>
-      {`
+          <style>
+            {`
       html, body {
-        background-color: #252839 !important;
+        background-color: #0e0e0f !important;
       }
+      #text1{
+        color: white;
+    }
 
     `}
-    </style>
+          </style>
           <Header
             as="h1"
             content="Honest Game Review"
@@ -60,37 +65,38 @@ const Homepage = ({ mobile }) => {
             }}
           />
           <Button
-          as={NavLink} exact to="/games"
-          inverted color="purple" size="huge">
+            as={NavLink}
+            exact
+            to="/games"
+            inverted
+            size="huge"
+            style={{ color: '#772ce7', textColor: '#fffff' }}
+          >
             Get Started
             <Icon name="right arrow" />
           </Button>
         </Container>
       </Segment>
 
-      <Segment  style={{ padding: '8em 0em',  marginTop:"-100px"}} vertical>
-        <Container  text>
-        <Divider
+      <Segment style={{ padding: '8em 0em', marginTop: '-100px' }} vertical>
+        <Container text>
+          <Divider
             as="h2"
             className="header"
             horizontal
             style={{ margin: '2em 0em', textTransform: 'uppercase' }}
           >
-            <Header
-            color="purple"
-            >
-
-            Starting Finding The Right Games
+            <Header style={{ color: '#772ce7' }}>
+              Starting Finding The Right Games
             </Header>
           </Divider>
 
-          <p style={{ fontSize: '1.33em' }}>
-            We have provided a reviewing platform
-            where your time matters and so does your money. With the in-depth
-            review system, you can browse games that match your
-            needs. Don't waste your money find a game now!
+          <p id="text1" style={{ fontSize: '1.33em' }}>
+            We have provided a reviewing platform where your time matters and so
+            does your money. With the in-depth review system, you can browse
+            games that match your needs. Don't waste your money find a game now!
           </p>
-          <Button as={NavLink} position='left'  exact to="/games" size="large">
+          <Button as={NavLink} position="left" exact to="/games" size="large">
             Search Games
           </Button>
 
@@ -98,22 +104,16 @@ const Homepage = ({ mobile }) => {
             as="h2"
             className="header"
             horizontal
-            style={{  textTransform: 'uppercase' }}
+            style={{ textTransform: 'uppercase' }}
           >
-            <Header
-      color="purple"
-            >
-        Current Highest Played Games
+            <Header style={{ color: '#772ce7' }}>
+              Current Highest Played Games
             </Header>
           </Divider>
 
           <CardGroup itemsPerRow={3}>
             {source.map((s) => (
-              <Card
-              color="purple"
-                style={{ maxWidth: '240px', marginTop: '40px' }}
-                image={s}
-              />
+              <Card color="purple" style={{ color: '#772ce7' }} image={s} />
             ))}
           </CardGroup>
 
@@ -121,16 +121,17 @@ const Homepage = ({ mobile }) => {
             as="h2"
             className="header"
             horizontal
-            style={{   margin: '2em 0em', textTransform: 'uppercase', marginTop: '90px'  }}
+            style={{
+              margin: '2em 0em',
+              textTransform: 'uppercase',
+              marginTop: '90px',
+            }}
           >
-            <Header
-            color="purple"
-            >
-
-          Wanna keep up on the latest news
+            <Header style={{ color: '#772ce7' }}>
+              Wanna keep up on the latest news
             </Header>
           </Divider>
-          <p style={{ fontSize: '1.33em' }}>
+          <p id="text1" style={{ fontSize: '1.33em' }}>
             Yes I know you probably disregarded the earlier boasts as
             non-sequitur filler content, but it's really true, we provided a
             real in time news feature update where the latest gaming news is
@@ -141,9 +142,6 @@ const Homepage = ({ mobile }) => {
           </Button>
         </Container>
       </Segment>
-
-        <Image  centered style={{maxWidth:"100px"}} src="https://assets-prd.ignimgs.com/2020/11/20/nxgcw-philspencerbethesda-poll-1605881864424.png?crop=1%3A1" />
-
     </>
   );
 };
