@@ -41,7 +41,7 @@ const GamesPortal = () => {
               <Image src={game.game_image} size="large" />
               <Card.Header
 
-              style={{marginTop: "8px", }}
+              style={{marginTop: "8px" }}
               >{game.game_title}
               </Card.Header>
               <Card.Meta
