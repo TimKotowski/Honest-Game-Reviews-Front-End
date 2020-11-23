@@ -5,11 +5,20 @@ import {
   Button,
   Icon,
   Segment,
-  Grid,
+  Text,
   Image,
-  Divider
+  Divider,
+  Card,
+  CardGroup,
 } from 'semantic-ui-react';
-import Connor from '../images/connor.jpg'
+import Connor from '../images/connor.jpg';
+import { NavLink } from 'react-router-dom';
+
+const source = [
+  'https://static-cdn.jtvnw.net/ttv-boxart/World%20of%20Warcraft-285x380.jpg',
+  'https://static-cdn.jtvnw.net/ttv-boxart/Among%20Us-285x380.jpg',
+  'https://static-cdn.jtvnw.net/ttv-boxart/Call%20of%20Duty:%20Black%20Ops%20Cold%20War-285x380.jpg',
+];
 
 const Homepage = ({ mobile }) => {
   return (
@@ -17,10 +26,18 @@ const Homepage = ({ mobile }) => {
       <Segment
         inverted
         textAlign="center"
-        style={{ minHeight: 700, padding: '1em 0em' }}
+        style={{ minHeight: 600, padding: '1em 0em', backgroundColor: "#2D3044  " }}
         vertical
       >
         <Container text>
+        <style>
+      {`
+      html, body {
+        background-color: #252839 !important;
+      }
+
+    `}
+    </style>
           <Header
             as="h1"
             content="Honest Game Review"
@@ -42,76 +59,90 @@ const Homepage = ({ mobile }) => {
               marginTop: mobile ? '0.5em' : '1.5em',
             }}
           />
-          <Button primary size="huge">
+          <Button
+          as={NavLink} exact to="/games"
+          inverted color="purple" size="huge">
             Get Started
             <Icon name="right arrow" />
           </Button>
         </Container>
       </Segment>
 
-      <Segment style={{ padding: '0em' }} vertical>
-        <Grid celled="internally" columns="equal" stackable>
-          <Grid.Row textAlign="center">
-            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as="h3" style={{ fontSize: '2em' }}>
-                "What a Company"
-              </Header>
-              <p style={{ fontSize: '1.33em' }}>
-                That is what they all say about us
-              </p>
-            </Grid.Column>
-            <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as="h3" style={{ fontSize: '2em' }}>
-                "One of the best and most non liberal gaming sites"
-              </Header>
-              <p style={{ fontSize: '1.33em' }}>
-                <Image size='small' avatar src={Connor} />
-                 Chief Of Chads
-              </p>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+      <Segment  style={{ padding: '8em 0em',  marginTop:"-100px"}} vertical>
+        <Container  text>
+        <Divider
+            as="h2"
+            className="header"
+            horizontal
+            style={{ margin: '2em 0em', textTransform: 'uppercase' }}
+          >
+            <Header
+            color="purple"
+            >
+
+            Starting Finding The Right Games
+            </Header>
+          </Divider>
+
+          <p style={{ fontSize: '1.33em' }}>
+            We have provided a reviewing platform
+            where your time matters and so does your money. With the in-depth
+            review system, you can browse games that match your
+            needs. Don't waste your money find a game now!
+          </p>
+          <Button as={NavLink} position='left'  exact to="/games" size="large">
+            Search Games
+          </Button>
+
+          <Divider
+            as="h2"
+            className="header"
+            horizontal
+            style={{  textTransform: 'uppercase' }}
+          >
+            <Header
+      color="purple"
+            >
+        Current Highest Played Games
+            </Header>
+          </Divider>
+
+          <CardGroup itemsPerRow={3}>
+            {source.map((s) => (
+              <Card
+              color="purple"
+                style={{ maxWidth: '240px', marginTop: '40px' }}
+                image={s}
+              />
+            ))}
+          </CardGroup>
+
+          <Divider
+            as="h2"
+            className="header"
+            horizontal
+            style={{   margin: '2em 0em', textTransform: 'uppercase', marginTop: '90px'  }}
+          >
+            <Header
+            color="purple"
+            >
+
+          Wanna keep up on the latest news
+            </Header>
+          </Divider>
+          <p style={{ fontSize: '1.33em' }}>
+            Yes I know you probably disregarded the earlier boasts as
+            non-sequitur filler content, but it's really true, we provided a
+            real in time news feature update where the latest gaming news is
+            right here for your leasiure!
+          </p>
+          <Button as="a" size="large">
+            Search News!
+          </Button>
+        </Container>
       </Segment>
 
-
-
-      <Segment style={{ padding: '8em 0em' }} vertical>
-      <Container text>
-        <Header as='h3' style={{ fontSize: '2em' }}>
-          Breaking The Grid, Grabs Your Attention
-        </Header>
-        <p style={{ fontSize: '1.33em' }}>
-          Instead of focusing on content creation and hard work, we have learned how to master the
-          art of doing nothing by providing massive amounts of whitespace and generic content that
-          can seem massive, monolithic and worth your attention.
-        </p>
-        <Button as='a' size='large'>
-          Read More
-        </Button>
-
-        <Divider
-          as='h4'
-          className='header'
-          horizontal
-          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
-        >
-          <a href='#'>Case Studies</a>
-        </Divider>
-
-        <Header as='h3' style={{ fontSize: '2em' }}>
-          Did We Tell You About Our Bananas?
-        </Header>
-        <p style={{ fontSize: '1.33em' }}>
-          Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but
-          it's really true. It took years of gene splicing and combinatory DNA research, but our
-          bananas can really dance.
-        </p>
-        <Button as='a' size='large'>
-          I'm Still Quite Interested
-        </Button>
-      </Container>
-    </Segment>
-
+        <Image  centered style={{maxWidth:"100px"}} src="https://assets-prd.ignimgs.com/2020/11/20/nxgcw-philspencerbethesda-poll-1605881864424.png?crop=1%3A1" />
 
     </>
   );

@@ -15,6 +15,16 @@ export const getAllGames = () => async dispatch => {
   }
 }
 
+
+export const getPublisher = query => async dispatch => {
+  try {
+    const {data: listOfGames} = await axios.get(`/api/v1/games/company?publisher=${query}`)
+    console.log("pub", listOfGames)
+    dispatch(getGames(listOfGames))
+  } catch (error) {
+    console.log('error in category product thunk', error)
+  }
+}
 // reducer
 const games = (state = [], action) => {
   switch (action.type) {

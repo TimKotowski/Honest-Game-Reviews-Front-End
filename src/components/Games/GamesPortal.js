@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllGames } from '../../store/games';
-import { Card, Icon, Image, Rating, Button } from 'semantic-ui-react';
-import GamesMenuBar from './GamesMenuBar'
+import { Card, Icon, Image, Rating, Button, Container, Popup } from 'semantic-ui-react';
+import GamesMenuBar from './GamesMenuBar';
 // import GamesPagination from './GamesPagination'
 
 const GamesPortal = () => {
@@ -13,51 +13,69 @@ const GamesPortal = () => {
     dispatch(getAllGames());
   }, []);
 
-  console.log('success', games);
   return (
-    <>
-    <GamesMenuBar
+  <Container>
+     <style>
+      {`
+      html, body {
+        background-color: #252839 !important;
+      }
+      color {
+        align-content: center;
+        background-color: #495285;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 6em;
+      }
 
-    />
-    <Card.Group>
-      {games.map((game) => (
-        <Card color="blue"
-        style={{  marginTop: "2em" }}
-        >
-          <Card.Content   >
-            <Image src={game.game_image} size="large" />
-            <Card.Header>{game.game_title}</Card.Header>
-            <Card.Meta>{game.company}</Card.Meta>
-            <Card.Description>
-              {game.metacritic >= 75 ? (
-                <Card.Content>
-                  <Icon color="green" name="circle" />
-                  Metacrtic Score: {game.metacritic}
-                </Card.Content>
-              ) : (
-                <Card.Content>
-                  <Icon color="red"  name="circle" />
-                  Metacrtic Score: {game.metacritic}
-                </Card.Content>
-              )}
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-          <Button size="mini" color="blue">
-            Review
-          <Icon name="right arrow" />
-          </Button>
-      </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Rating icon="star" defaultRating={game.rating} maxRating={5} />
-              Rating
-            </a>
-          </Card.Content>
-        </Card>
-      ))}
-    </Card.Group>
-      </>
+
+    `}
+    </style>
+      <GamesMenuBar  />
+
+            <Card.Group>
+        {games.map((game) => (
+          <Card key={game.id} color="black" style={{marginTop: "15px", marginBottom: "20px", maxWidth: "240px"}}>
+              <Image src={game.game_image} size="large" />
+              <Card.Header
+
+              style={{marginTop: "8px", }}
+              >{game.game_title}
+              </Card.Header>
+              <Card.Meta
+                style={{marginTop: "1px"}}
+                >{game.company}</Card.Meta>
+              <Card.Description
+                 style={{textAlign: "left", marginTop: "8px"}}
+                 >
+                {game.metacritic >= 75 ? (
+                  <Card.Content>
+                    <Icon color="green" name="circle" />
+
+                    Metacritic Score: {game.metacritic}
+                  </Card.Content>
+
+) : (
+  <Card.Content>
+                    <Icon color="red" name="circle" />
+                    Metacritic Score: {game.metacritic}
+                  </Card.Content>
+
+)}
+              </Card.Description>
+
+            <Card.Content extra>
+              <a>
+                <Rating icon="star" defaultRating={game.rating} maxRating={5} />
+                Rating
+              </a>
+            </Card.Content>
+          </Card>
+        ))}
+      </Card.Group>
+        </Container>
   );
 };
 export default GamesPortal;
