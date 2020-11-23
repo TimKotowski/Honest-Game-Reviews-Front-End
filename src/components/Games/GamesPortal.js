@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllGames } from '../../store/games';
-import { Card, Icon, Image, Rating, Button, Container, Popup } from 'semantic-ui-react';
+import {
+  Card,
+  Icon,
+  Image,
+  Rating,
+  Container,
+} from 'semantic-ui-react';
 import GamesMenuBar from './GamesMenuBar';
-// import GamesPagination from './GamesPagination'
 
 const GamesPortal = () => {
   const games = useSelector((state) => state.games);
@@ -14,11 +19,11 @@ const GamesPortal = () => {
   }, []);
 
   return (
-  <Container>
-     <style>
-      {`
+    <Container>
+      <style>
+        {`
       html, body {
-        background-color: #252839 !important;
+        background-color: #0e0e0f !important;
       }
       color {
         align-content: center;
@@ -29,42 +34,39 @@ const GamesPortal = () => {
         justify-content: center;
         min-height: 6em;
       }
-
-
     `}
-    </style>
-      <GamesMenuBar  />
+      </style>
 
-            <Card.Group>
+      <GamesMenuBar />
+      <Card.Group>
         {games.map((game) => (
-          <Card key={game.id} color="black" style={{marginTop: "15px", marginBottom: "20px", maxWidth: "240px"}}>
-              <Image src={game.game_image} size="large" />
-              <Card.Header
-
-              style={{marginTop: "8px" }}
-              >{game.game_title}
-              </Card.Header>
-              <Card.Meta
-                style={{marginTop: "1px"}}
-                >{game.company}</Card.Meta>
-              <Card.Description
-                 style={{textAlign: "left", marginTop: "8px"}}
-                 >
-                {game.metacritic >= 75 ? (
-                  <Card.Content>
-                    <Icon color="green" name="circle" />
-
-                    Metacritic Score: {game.metacritic}
-                  </Card.Content>
-
-) : (
-  <Card.Content>
-                    <Icon color="red" name="circle" />
-                    Metacritic Score: {game.metacritic}
-                  </Card.Content>
-
-)}
-              </Card.Description>
+          <Card
+            key={game.id}
+            color="black"
+            style={{
+              marginTop: '15px',
+              marginBottom: '20px',
+              maxWidth: '240px',
+            }}
+          >
+            <Image src={game.game_image} size="large" />
+            <Card.Header style={{ marginTop: '8px' }}>
+              {game.game_title}
+            </Card.Header>
+            <Card.Meta style={{ marginTop: '1px' }}>{game.company}</Card.Meta>
+            <Card.Description style={{ textAlign: 'left', marginTop: '8px' }}>
+              {game.metacritic >= 75 ? (
+                <Card.Content>
+                  <Icon color="green" name="circle" />
+                  Metacritic Score: {game.metacritic}
+                </Card.Content>
+              ) : (
+                <Card.Content>
+                  <Icon color="red" name="circle" />
+                  Metacritic Score: {game.metacritic}
+                </Card.Content>
+              )}
+            </Card.Description>
 
             <Card.Content extra>
               <a>
@@ -75,7 +77,7 @@ const GamesPortal = () => {
           </Card>
         ))}
       </Card.Group>
-        </Container>
+    </Container>
   );
 };
 export default GamesPortal;
